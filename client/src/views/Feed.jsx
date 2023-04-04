@@ -5,7 +5,7 @@ import CustomeButton from '../components/CustomeButton'
 
 const Feed = ({ user, setUser, posts, setPosts }) => {
 
-   //console.warn(posts)
+   console.log('Posts is',posts)
 
 const renderPostItem = ({ item }) => {
     return (
@@ -23,9 +23,9 @@ const renderPostItem = ({ item }) => {
 
   //fetch posts
   useEffect(() => {
-    fetch('http://10.129.3.211:3000/posts')
-    .then((r) => r.json())
-    .then((postsData) => setPosts(postsData))
+    // fetch('http://10.129.3.211:3000/posts')
+    // .then((r) => r.json())
+    // .then((postsData) => setPosts(postsData))
   }, [])
     
 

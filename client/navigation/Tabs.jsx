@@ -11,7 +11,7 @@ const Tab = createBottomTabNavigator()
 
 const Tabs = ({ handleLogout, setUser, user, posts, setPosts }) => {
 
-    //console.warn(posts)
+    // console.warn(posts)
     return (
         <Tab.Navigator>
             <Tab.Screen 

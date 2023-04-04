@@ -8,6 +8,11 @@ import { useState, useEffect } from 'react';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Tabs from './navigation/Tabs';
 
+const loadUser = async () => {
+  let token = await AsyncStorage.getItem('token')
+  return token || null
+}
+
 const Stack = createNativeStackNavigator()
 
 export default function App() {
@@ -21,23 +26,23 @@ export default function App() {
 
   //stay logeed in
   useEffect(() => {
-    let token = AsyncStorage.getItem('token')
-    if (token) {
-      fetch("http://10.129.3.211:3000/me", { headers: { 'Authorization': token }})
-      .then(response => {
-        if(response.ok){
-          response.json().then(userData => {
-            setUser(userData.user)
-          })
+    const getLoggedInUser = async () => {
+      let req, res // make these names accessible throughout function
+      let token = await loadUser()
+      if (token) {
+        req = await fetch("http://10.129.3.211:3000/me", {
+          headers: { Authorization: token }
+        })
+        if (req.ok) { // if the HTTP status of the request is 200
+          res = await req.json()
+          setUser(res.user)
+        } else {
+          // redirect to home screen/login screen
         }
-        else{
-          console.log(response.status)
-        }
-      })
-    } else {
-      console.log("No token found, try logging in!")
+      }
     }
 
+    getLoggedInUser()
   }, [])
 
   return (
