@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 import Tabs from './navigation/Tabs';
 import { loadUser } from './src/functions';
 import TestScreen from './src/views/TestScreen';
+import Home from './src/views/Home';
 
 const Stack = createNativeStackNavigator()
 
@@ -54,6 +55,10 @@ export default function App() {
       <Stack.Screen
         name="TestScreen"
         component={TestScreen}
+       />
+        <Stack.Screen
+        name="Home"
+        component={Home}
        />
    </Stack.Navigator>
    </NavigationContainer> 
