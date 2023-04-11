@@ -2,10 +2,18 @@ import { StyleSheet, Text, View, ImageBackground, Image, Pressable } from 'react
 import React from 'react'
 import avatar from '../../assets/avatar.jpg'
 import CustomeButton from '../components/CustomeButton'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useNavigation } from '@react-navigation/native'
 
 const MyProfile = () => {
 
+  const navigation = useNavigation()
   const bkimage = {uri: 'https://4my3boyz.com/content/images/thumbs/0020475_la-vida-loca-sacred-heart-fiesta-mexican-art-pink-hearts-cotton-fabric_500.jpeg'}
+
+  const logout = () => {
+    AsyncStorage.clear()
+    navigation.navigate('Login')
+  }
 
   return (
     <ImageBackground 
@@ -26,7 +34,7 @@ const MyProfile = () => {
         <CustomeButton text='My posts'/>
       </View>
       <View style={styles.myprofilebtn}>
-        <CustomeButton text='Log out' />
+        <CustomeButton text='Log out' onPress={logout} />
       </View>
     </ImageBackground>
   )

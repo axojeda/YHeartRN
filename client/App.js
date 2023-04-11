@@ -4,9 +4,11 @@ import Login from './src/views/Login';
 import Signup from './src/views/Signup';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import { useState, useEffect } from 'react';
 import Tabs from './navigation/Tabs';
 import { loadUser } from './src/functions';
+import TestScreen from './src/views/TestScreen';
 
 const Stack = createNativeStackNavigator()
 
@@ -42,20 +44,18 @@ export default function App() {
 
   return (
     <NavigationContainer>
-    {user ? (
-    <Tabs user={user} setUser={setUser} posts={posts} setPosts={setPosts}/>
-  ) : (
     <Stack.Navigator screenOptions={{headerShown: true}}>
-  <Stack.Screen name="Login">
-              {() => <Login setUser={setUser} user={user} />}
-            </Stack.Screen>
-
-            <Stack.Screen name="Signup">
-              {() => <Signup setUser={setUser} user={user} />}
-            </Stack.Screen>
+      <Stack.Screen name="Login">
+        {() => <Login setUser={setUser} user={user} />}
+      </Stack.Screen>
+      <Stack.Screen name="Signup">
+        {() => <Signup setUser={setUser} user={user} />}
+      </Stack.Screen>
+      <Stack.Screen
+        name="TestScreen"
+        component={TestScreen}
+       />
    </Stack.Navigator>
-   ) 
-   } 
    </NavigationContainer> 
   )
   
