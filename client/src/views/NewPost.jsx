@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,  } from 'react-native'
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React from 'react'
 import { useState } from 'react'
 import CustomeInput from '../components/CustomeInput'
@@ -7,36 +7,9 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 const NewPost = ({ user, posts, setPosts}) => {
 
-  // const [formData, setFormData] = useState({
-  //   user_id: user.id
-  // })
-  
-  // console.log(user)
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   fetch("http://localhost:3000/posts", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(formData),
-  //   })
-  //     .then((res) => res.json())
-  //     .then(newPost => {
-  //       alert("New Post added!")
-  //       setPosts(posts => [newPost, ...posts])
-  //     });
-  // }
-
-  // function handleChange(event){
-  //   setFormData(formData => {
-  //     return {...formData, [event.target.name]: event.target.value}
-  //   })
-  // }
 
   return (
-    <View style={styles.root}>
+    <ScrollView style={styles.root}>
       <Text style={styles.formtitle}>Create a new post</Text>
       <View style={styles.input}>
          <CustomeInput 
@@ -67,35 +40,39 @@ const NewPost = ({ user, posts, setPosts}) => {
          name='post_img'
          placeholder='Image'/>
    </View>
-     <View>
+     <View style={styles.checkboxcontainer}>
        <View style={styles.checkboxview}>
           <Text style={styles.label}>🚩</Text>
-          <BouncyCheckbox style={styles.checkbox}/>
+          <BouncyCheckbox style={styles.checkbox} fillColor='#e4007c'/>
        </View>
         <View style={styles.checkboxview}>
           <Text style={styles.label}>🍵</Text>
-          <BouncyCheckbox style={styles.checkbox}/>
+          <BouncyCheckbox style={styles.checkbox} fillColor='#e4007c'/>
         </View>
         <View style={styles.checkboxview}>
           <Text style={styles.label}>❓</Text>
-          <BouncyCheckbox style={styles.checkbox}/>
+          <BouncyCheckbox style={styles.checkbox} fillColor='#e4007c'/>
         </View>
         <View style={styles.checkboxview}>
          <Text style={styles.label}>⚠️</Text>
-         <BouncyCheckbox style={styles.checkbox}/>
+         <BouncyCheckbox style={styles.checkbox} fillColor='#e4007c'/>
         </View>
         <View style={styles.checkboxview}>
           <Text style={styles.label}>💚</Text>
-          <BouncyCheckbox style={styles.checkbox}/>
+          <BouncyCheckbox style={styles.checkbox} fillColor='#e4007c'/>
         </View>
         <View style={styles.checkboxview}>
          <Text style={styles.label}>✅</Text>
-         <BouncyCheckbox style={styles.checkbox}/>
+         <BouncyCheckbox style={styles.checkbox} fillColor='#e4007c'
+         />
         </View>
       <View>
     </View>
   </View>
-</View>
+  <View style={styles.btnview}>
+  <CustomeButton text='Send' />
+  </View>
+</ScrollView>
   )
 }
 
@@ -107,6 +84,35 @@ const styles = StyleSheet.create({
   },
   formtitle: {
     color: '#e4007c',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 30,
+    padding: 20
+  },
+  input: {
+    paddingLeft: 20,
+    paddingRight: 20, 
+    padding: 10
+  },
+  label: {
+    fontSize: 40,
+    paddingBottom: 10
+  },
+  checkboxview: {
+  flexDirection: 'column',
+  padding: 10
+  },
+  checkboxcontainer: {
+    flexDirection: 'row',
+    justifyContent: 'center'
+  }, 
+  checkbox: {
+    marginLeft: 10,
+  },
+  btnview: {
+    paddingLeft: 30,
+    paddingRight: 30,
+    shadowColor: 'black',
+    shadowOpacity: 0.6,
   }
 })

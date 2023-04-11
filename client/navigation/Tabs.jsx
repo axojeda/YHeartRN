@@ -18,7 +18,7 @@ const Tabs = ({ handleLogout, setUser, user, posts, setPosts }) => {
                 name='Home' 
                 component={Home}
             />
-            <Tab.Screen name='Feed' component={Feed} posts={posts} setPosts={setPosts} user={user} setUser={setUser} />
+            <Tab.Screen name='Feed' component={Feed} />
             <Tab.Screen name='NewPost' component={NewPost} user={user} setPosts={setPosts}  />
             <Tab.Screen name='MyProfile' component={MyProfile} user={user} setUser={setUser} />
         </Tab.Navigator>
