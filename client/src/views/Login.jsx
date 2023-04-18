@@ -24,7 +24,7 @@ const Login = ({ user, setUser }) => {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify({email: 'maria@dev.com', password: '123456'})
     })
     .then(response => {
       if(response.ok){
@@ -62,7 +62,7 @@ const Login = ({ user, setUser }) => {
       <View style= {styles.container}>
         <CustomeInput 
         placeholder="E-mail" 
-        name='email' 
+        name='email'
         onChangeText={(value) => handleOnChange('email', value)} 
         />
         <CustomeInput 
